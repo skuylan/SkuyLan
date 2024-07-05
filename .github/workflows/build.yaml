@@ -10,12 +10,12 @@ on:
         description: "Name of your domain (not subdomain) at CF"
         required: true
         type: string
-        default: "haijuga.my.id"
+        default: haijuga.my.id
       UUID:
         description: "Your UUID or auto for autogenerate"
         required: false
         type: string
-        default: "87f417e6-09bc-405f-8c34-3ec13be49c9e"
+        default: 87f417e6-09bc-405f-8c34-3ec13be49c9e
       PROXYIP:
         description: "Valid IP proxy"
         required: true
