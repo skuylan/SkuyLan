@@ -46,7 +46,7 @@ export default {
               },
             });
           }
-          case `/${userID_Path}`: {
+          case `/vless`: {
             const วเลสConfig = getวเลสConfig(
               userID,
               request.headers.get("Host")
@@ -729,241 +729,127 @@ const pt = "dmxlc3M=";
 const ed = "RUR0dW5uZWw=";
 /**
  *
- * @param {string} userID - single or comma separated userIDs
- * @param {string | null} hostName
- * @returns {string}
- */
+* @param {string} userID - single or comma separated userIDs
+* @param {string | null} hostName
+* @returns {string}
+*/
 function getวเลสConfig(userIDs, hostName) {
-  const commonUrlPart = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#${hostName}`;
-  const hashSeparator =
-    "################################################################";
+	   const vlessTls = `vless://${userID}\u0040${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvless-ws#SkuyLan TLS`;
+	   const vlessNtls = `vless://${userID}\u0040${hostName}:80?path=%2Fvless-ws&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#SkuyLan NTLS)`;
+	   const vlessXcl = `vless://${userID}\u0040ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2Fvless-ws#SkuyLan AVA`;
+	   
+	// Split the userIDs into an array
+	const userIDArray = userIDs.split(",");
 
-  // Split the userIDs into an array
-  const userIDArray = userIDs.split(",");
+	// Prepare output string for each userID
+		const output = userIDArray
+	   .map((userID) => {
+			const vlessTlsFormatted =
+  		      atob(pt) + "://" + userID + atob(at) + hostName + vlessTls;
+	   		const vlessNtlsFormatted = 
+			   atob(pt) + "://" + userID + atob(at) + hostName + vlessNtls;
+	   		const vlessXclFormatted = 
+			   atob(pt) + "://" + userID + atob(at) + hostName + vlessXcl;
+			return `<h2><center>=========================================
+SkuyLan VLESS ACCOUNT
+=========================================</center></h2>
+</div>» DOMAIN      : ${hostName}
+» USER ID     : ${userID}
+» PORT TLS    : 443
+» PORT NTLS   : 80
+» SECURITY    : auto
+» NETWORK     : (WS)
+» PATH        : /vless-ws
+<div style="text-align: center;">
+========================================
+<b> VLESS TLS 443 </b> <button onclick='copyToClipboard("${vlessTlsFormatted}")'><i class="fa fa-clipboard"></i> Copy </button>
+========================================
+<b> VLESS NTLS 80 </b> <button onclick='copyToClipboard("${vlessNtlsFormatted}")'><i class="fa fa-clipboard"></i> Copy </button>
+========================================
+<b> Pointing XCL Only </b> <button onclick='copyToClipboard("${vlessXclFormatted}")'><i class="fa fa-clipboard"></i> Copy </button>
+========================================
 
-  // Prepare output string for each userID
-  const output = userIDArray
-    .map((userID) => {
-      const วเลสMain =
-        atob(pt) + "://" + userID + atob(at) + hostName + commonUrlPart;
-      const วเลสSec =
-        atob(pt) + "://" + userID + atob(at) + พร็อกซีไอพี + commonUrlPart;
-      return `<h2>UUID: ${userID}</h2>${hashSeparator}\nv2ray default ip
----------------------------------------------------------------
-${วเลสMain}
-<button onclick='copyToClipboard("${วเลสMain}")'><i class="fa fa-clipboard"></i> Copy วเลสMain</button>
----------------------------------------------------------------
-v2ray with bestip
----------------------------------------------------------------
-${วเลสSec}
-<button onclick='copyToClipboard("${วเลสSec}")'><i class="fa fa-clipboard"></i> Copy วเลสSec</button>
----------------------------------------------------------------`;
-    })
-    .join("\n");
-  const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`;
-  const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
-  const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(
-    sublink
-  )}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
+
+<div style="text-align: center;">
+ <a href="https://t.me/skuylan" target="_blank" style="text-decoration: none;">Thanks to: <button style="color: #00D69F; background-color: transparent; border: none;">Telegram</button></a>
+</div>`;
+})
+
   // Prepare header string
   const header = `
-<p align='center'><img src='https://cloudflare-ipfs.com/ipfs/bafybeigd6i5aavwpr6wvnwuyayklq3omonggta4x2q7kpmgafj357nkcky' alt='图片描述' style='margin-bottom: -50px;'>
-<b style='font-size: 15px;'>Welcome! This function generates configuration for วเลส protocol. If you found this useful, please check our GitHub project for more:</b>
-<b style='font-size: 15px;'>欢迎！这是生成 วเลส 协议的配置。如果您发现这个项目很好用，请查看我们的 GitHub 项目给我一个star：</b>
-<a href='https://github.com/3Kmfi6HP/EDtunnel' target='_blank'>EDtunnel - https://github.com/3Kmfi6HP/EDtunnel</a>
-<iframe src='https://ghbtns.com/github-btn.html?user=USERNAME&repo=REPOSITORY&type=star&count=true&size=large' frameborder='0' scrolling='0' width='170' height='30' title='GitHub'></iframe>
-<a href='//${hostName}/sub/${
-    userIDArray[0]
-  }' target='_blank'>วเลส 节点订阅连接</a>
-<a href='clash://install-config?url=${encodeURIComponent(
-    `https://${hostName}/sub/${userIDArray[0]}?format=clash`
-  )}}' target='_blank'>Clash for Windows 节点订阅连接</a>
-<a href='${clash_link}' target='_blank'>Clash 节点订阅连接</a>
-<a href='${subbestip}' target='_blank'>优选IP自动节点订阅</a>
-<a href='clash://install-config?url=${encodeURIComponent(
-    subbestip
-  )}' target='_blank'>Clash优选IP自动</a>
-<a href='sing-box://import-remote-profile?url=${encodeURIComponent(
-    subbestip
-  )}' target='_blank'>singbox优选IP自动</a>
-<a href='sn://subscription?url=${encodeURIComponent(
-    subbestip
-  )}' target='_blank'>nekobox优选IP自动</a>
-<a href='v2rayng://install-config?url=${encodeURIComponent(
-    subbestip
-  )}' target='_blank'>v2rayNG优选IP自动</a></p>`;
+`;
 
-  // HTML Head with CSS and FontAwesome library
-  const htmlHead = `
-  <head>
-	<title>EDtunnel: วเลส configuration</title>
-	<meta name='description' content='This is a tool for generating วเลส protocol configurations. Give us a star on GitHub https://github.com/3Kmfi6HP/EDtunnel if you found it useful!'>
-	<meta name='keywords' content='EDtunnel, cloudflare pages, cloudflare worker, severless'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<meta property='og:site_name' content='EDtunnel: วเลส configuration' />
-	<meta property='og:type' content='website' />
-	<meta property='og:title' content='EDtunnel - วเลส configuration and subscribe output' />
-	<meta property='og:description' content='Use cloudflare pages and worker severless to implement วเลส protocol' />
-	<meta property='og:url' content='https://${hostName}/' />
-	<meta property='og:image' content='https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(
-    `วเลส://${userIDs.split(",")[0]}@${hostName}${commonUrlPart}`
-  )}' />
-	<meta name='twitter:card' content='summary_large_image' />
-	<meta name='twitter:title' content='EDtunnel - วเลส configuration and subscribe output' />
-	<meta name='twitter:description' content='Use cloudflare pages and worker severless to implement วเลส protocol' />
-	<meta name='twitter:url' content='https://${hostName}/' />
-	<meta name='twitter:image' content='https://cloudflare-ipfs.com/ipfs/bafybeigd6i5aavwpr6wvnwuyayklq3omonggta4x2q7kpmgafj357nkcky' />
-	<meta property='og:image:width' content='1500' />
-	<meta property='og:image:height' content='1500' />
+ // HTML Head with CSS and FontAwesome library
+const htmlHead = `
+<head>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-	<style>
-	body {
-	  font-family: Arial, sans-serif;
-	  background-color: #f0f0f0;
-	  color: #333;
-	  padding: 10px;
-	}
+   <style>
+   body {
+	   font-family: Arial, sans-serif;
+	   background-color: #000;
+	   color: #00D69F;
+	   padding: 10px 0;
+   }
 
-	a {
-	  color: #1a0dab;
-	  text-decoration: none;
-	}
-	img {
-	  max-width: 100%;
-	  height: auto;
-	}
+   a {
+	   color: #red;
+	   text-decoration: none;
+   }
+   img {
+	   max-width: 100%;
+	   height: auto;
+   }
 
-	pre {
-	  white-space: pre-wrap;
-	  word-wrap: break-word;
-	  background-color: #fff;
-	  border: 1px solid #ddd;
-	  padding: 15px;
-	  margin: 10px 0;
-	}
-	/* Dark mode */
-	@media (prefers-color-scheme: dark) {
-	  body {
-		background-color: #333;
-		color: #f0f0f0;
-	  }
+   pre {
+	   white-space: pre-wrap;
+	   word-wrap: break-word;
+	   background-color: #000;
+	   border: 3px solid #00D69F;
+	   padding: 15px;
+	   margin: 10px;
+   }
 
-	  a {
-		color: #9db4ff;
-	  }
 
-	  pre {
-		background-color: #282a36;
-		border-color: #6272a4;
-	  }
-	}
-	</style>
 
-	<!-- Add FontAwesome library -->
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-  </head>
-  `;
+   a {
+	   color: #9db4ff;
+   }
 
-  // Join output with newlines, wrap inside <html> and <body>
-  return `
-  <html>
-  ${htmlHead}
-  <body>
-  <pre style='background-color: transparent; border: none;'>${header}</pre>
-  <pre>${output}</pre>
-  </body>
-  <script>
-	function copyToClipboard(text) {
-	  navigator.clipboard.writeText(text)
-		.then(() => {
-		  alert("Copied to clipboard");
-		})
-		.catch((err) => {
-		  console.error("Failed to copy to clipboard:", err);
-		});
-	}
-  </script>
-  </html>`;
-}
+   pre {
+	   background-color: #282a36;
+	   border-color: #00D69F;
+	   border-radius: 30px;
+	   border-top: 10px solid #00D69F;
+	   border-bottom: 10px solid #00D69F;
+	   border-left: 5px solid #00D69F;
+	   border-right: 5px solid #00D69F;
+   }
+   }
+   </style>
 
-const เซ็ตพอร์ตHttp = new Set([80, 8080, 8880, 2052, 2086, 2095, 2082]);
-const เซ็ตพอร์ตHttps = new Set([443, 8443, 2053, 2096, 2087, 2083]);
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+</head>
+`;
 
-function สร้างวเลสSub(ไอดีผู้ใช้_เส้นทาง, ชื่อโฮสต์) {
-  const อาร์เรย์ไอดีผู้ใช้ = ไอดีผู้ใช้_เส้นทาง.includes(",")
-    ? ไอดีผู้ใช้_เส้นทาง.split(",")
-    : [ไอดีผู้ใช้_เส้นทาง];
-  const ส่วนUrlทั่วไปHttp = `?encryption=none&security=none&fp=random&type=ws&host=${ชื่อโฮสต์}&path=%2F%3Fed%3D2048#`;
-  const ส่วนUrlทั่วไปHttps = `?encryption=none&security=tls&sni=${ชื่อโฮสต์}&fp=random&type=ws&host=${ชื่อโฮสต์}&path=%2F%3Fed%3D2048#`;
-
-  const ผลลัพธ์ = อาร์เรย์ไอดีผู้ใช้.flatMap((ไอดีผู้ใช้) => {
-    const การกำหนดค่าHttp = Array.from(เซ็ตพอร์ตHttp).flatMap((พอร์ต) => {
-      if (!ชื่อโฮสต์.includes("pages.dev")) {
-        const ส่วนUrl = `${ชื่อโฮสต์}-HTTP-${พอร์ต}`;
-        const วเลสหลักHttp =
-          atob(pt) +
-          "://" +
-          ไอดีผู้ใช้ +
-          atob(at) +
-          ชื่อโฮสต์ +
-          ":" +
-          พอร์ต +
-          ส่วนUrlทั่วไปHttp +
-          ส่วนUrl;
-        return พร็อกซีไอพีs.flatMap((พร็อกซีไอพี) => {
-          const วเลสรองHttp =
-            atob(pt) +
-            "://" +
-            ไอดีผู้ใช้ +
-            atob(at) +
-            พร็อกซีไอพี +
-            ":" +
-            พอร์ต +
-            ส่วนUrlทั่วไปHttp +
-            ส่วนUrl +
-            "-" +
-            พร็อกซีไอพี +
-            "-" +
-            atob(ed);
-          return [วเลสหลักHttp, วเลสรองHttp];
-        });
-      }
-      return [];
-    });
-
-    const การกำหนดค่าHttps = Array.from(เซ็ตพอร์ตHttps).flatMap((พอร์ต) => {
-      const ส่วนUrl = `${ชื่อโฮสต์}-HTTPS-${พอร์ต}`;
-      const วเลสหลักHttps =
-        atob(pt) +
-        "://" +
-        ไอดีผู้ใช้ +
-        atob(at) +
-        ชื่อโฮสต์ +
-        ":" +
-        พอร์ต +
-        ส่วนUrlทั่วไปHttps +
-        ส่วนUrl;
-      return พร็อกซีไอพีs.flatMap((พร็อกซีไอพี) => {
-        const วเลสรองHttps =
-          atob(pt) +
-          "://" +
-          ไอดีผู้ใช้ +
-          atob(at) +
-          พร็อกซีไอพี +
-          ":" +
-          พอร์ต +
-          ส่วนUrlทั่วไปHttps +
-          ส่วนUrl +
-          "-" +
-          พร็อกซีไอพี +
-          "-" +
-          atob(ed);
-        return [วเลสหลักHttps, วเลสรองHttps];
-      });
-    });
-
-    return [...การกำหนดค่าHttp, ...การกำหนดค่าHttps];
-  });
-
-  return ผลลัพธ์.join("\n");
+	   return `
+<html>
+${htmlHead}
+<body>
+<pre style='background-color: transparent; border: none;'>${header}</pre>
+<pre>${output}</pre>
+</body>
+<script>
+   function copyToClipboard(text) {
+	   navigator.clipboard.writeText(text)
+		   .then(() => {
+			   alert("Copied to clipboard");
+		   })
+		   .catch((err) => {
+			   console.error("Failed to copy to clipboard:", err);
+		   });
+   }
+</script>
+</html>`;
+ 
 }
