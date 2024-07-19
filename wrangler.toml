@@ -8,7 +8,6 @@ routes = [
   { pattern = "investor.fb.com.%subdomain_name%", custom_domain = true },
   { pattern = "m.pubgmobile.com.%subdomain_name%", custom_domain = true },
   { pattern = "graph.instagram.com.%subdomain_name%", custom_domain = true },
-  { pattern = "space.byu.id.%subdomain_name%", custom_domain = true }
 ]
 workers_dev = false
 [vars]
