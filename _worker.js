@@ -734,9 +734,9 @@ const ed = "RUR0dW5uZWw=";
 * @returns {string}
 */
 function getวเลสConfig(userIDs, hostName) {
-	   const vlessTls = `vless://${userID}\u0040${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvless-ws#SkuyLan TLS`;
-	   const vlessNtls = `vless://${userID}\u0040${hostName}:80?path=%2Fvless-ws&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#SkuyLan NTLS)`;
-	   const vlessXcl = `vless://${userID}\u0040ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2Fvless-ws#SkuyLan AVA`;
+	   const vlessTls = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvless-ws#SkuyLan TLS`;
+	   const vlessNtls = `:80?path=%2Fvless-ws&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#SkuyLan NTLS)`;
+	   const vlessXcl = `:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2Fvless-ws#SkuyLan AVA`;
 	   
 	// Split the userIDs into an array
 	const userIDArray = userIDs.split(",");
@@ -750,9 +750,9 @@ function getวเลสConfig(userIDs, hostName) {
 			   atob(pt) + "://" + userID + atob(at) + hostName + vlessNtls;
 	   		const vlessXclFormatted = 
 			   atob(pt) + "://" + userID + atob(at) + hostName + vlessXcl;
-			return `<h2><center>=========================================
-SkuyLan VLESS ACCOUNT
-=========================================</center></h2>
+			return `<h2><center>===============================
+SkuyLan
+===============================</center></h2>
 </div>» DOMAIN      : ${hostName}
 » USER ID     : ${userID}
 » PORT TLS    : 443
@@ -771,7 +771,7 @@ SkuyLan VLESS ACCOUNT
 
 
 <div style="text-align: center;">
- <a href="https://t.me/skuylan" target="_blank" style="text-decoration: none;">Thanks to: <button style="color: #00D69F; background-color: transparent; border: none;">Telegram</button></a>
+ <a href="https://t.me/bagyog" target="_blank" style="text-decoration: none;">Thanks to: <button style="color: #00D69F; background-color: transparent; border: none;">Telegram</button></a>
 </div>`;
 })
 
