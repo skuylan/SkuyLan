@@ -1,7 +1,7 @@
 // @ts-ignore
 import { connect } from "cloudflare:sockets";
 
-let userID = "03ce5f91-ddf0-4ebb-9e5e-b2e480a16353";
+let userID = "1ec20ae6-0c02-4982-aaf9-aa9038ef809b";
 
 const พร็อกซีไอพีs = [
   "cdn.xn--b6gac.eu.org",
