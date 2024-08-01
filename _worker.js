@@ -734,8 +734,8 @@ const ed = "RUR0dW5uZWw=";
 * @returns {string}
 */
 function getวเลสConfig(userIDs, hostName) {
-	   const vlessTls = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvless-ws#SkuyLan TLS`;
-	   const vlessNtls = `:80?path=%2Fvless-ws&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#SkuyLan NTLS)`;
+	   const vlessTls = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvless-ws#SkuyLan-TLS`;
+	   const vlessNtls = `:80?path=%2Fvless-ws&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#SkuyLan-NTLS`;
 	   const vlessXcl = `:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2Fvless-ws#SkuyLan AVA`;
 	   
 	// Split the userIDs into an array
