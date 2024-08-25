@@ -13,7 +13,7 @@ on:
         default: skuylan.my.id
       UUID:
         description: "Your UUID or auto for autogenerate"
-        required: false
+        required: true
         type: string
         default: 1ec20ae6-0c02-4982-aaf9-aa9038ef809b
       PROXYIP:
