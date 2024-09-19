@@ -6,7 +6,9 @@ routes = [
   { pattern = "ava.game.naver.com.%subdomain_name%", custom_domain = true },
   { pattern = "investors.spotify.com.%subdomain_name%", custom_domain = true },
   { pattern = "investor.fb.com.%subdomain_name%", custom_domain = true },
-  { pattern = "m.pubgmobile.com.%subdomain_name%", custom_domain = true },
+  { pattern = "zaintest.vuclip.com.%subdomain_name%", custom_domain = true },
+  { pattern = "quiz.int.vidio.com.%subdomain_name%", custom_domain = true },
+  { pattern = "support.zoom.us.%subdomain_name%", custom_domain = true },
   { pattern = "graph.instagram.com.%subdomain_name%", custom_domain = true },
 ]
 workers_dev = false
