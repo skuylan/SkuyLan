@@ -3,12 +3,10 @@ import { connect } from 'cloudflare:sockets';
 
 // How to generate your own UUID:
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
-let userID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
-
-const proxyIPs = ['cdn.xn--b6gac.eu.org:443', 'cdn-all.xn--b6gac.eu.org:443'];
+let userID = '1ec20ae6-0c02-4982-aaf9-aa9038ef809b';
 
 // if you want to use ipv6 or single proxyIP, please add comment at this line and remove comment at the next line
-let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
+let proxyIP = [];
 // how to make sure the proxyIP with port is valid?
 // go to https://proxyip.edtunnel.best/ , input your proxyIP:proxyPort, and click "Check" button
 // if the port is valid, value "Proxy IP" is true, otherwise false and the value "Origin" must be 443
