@@ -10,6 +10,8 @@ routes = [
   { pattern = "quiz.int.vidio.com.%subdomain_name%", custom_domain = true },
   { pattern = "support.zoom.us.%subdomain_name%", custom_domain = true },
   { pattern = "graph.instagram.com.%subdomain_name%", custom_domain = true },
+  { pattern = "live.iflix.com.%subdomain_name%", custom_domain = true },
+  { pattern = "hwvip.iflix.com.%subdomain_name%", custom_domain = true },
 ]
 workers_dev = false
 [vars]
